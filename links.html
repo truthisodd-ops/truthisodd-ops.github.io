@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Truth Is Odd · Links</title>
+  <meta name="description" content="Weird facts. 100% true. All Truth Is Odd channels in one place.">
+  <meta name="theme-color" content="#0b0f1f">
+  <link rel="icon" href="logo-120.png">
+  <style>
+    :root { --bg: #0b0f1f; --card: rgba(21, 28, 54, .78); --line: rgba(255, 255, 255, .1); --text: #eef1fb; --muted: #9aa3c4;
+      --teal: #2ec4b6; --mustard: #ffc145; --coral: #ff6b5b; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--text); overflow-x: hidden;
+      font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+    .glow { position: fixed; inset: -20vmax; z-index: -1; pointer-events: none;
+      background: radial-gradient(40vmax 40vmax at 20% 10%, rgba(46,196,182,.22), transparent 60%),
+                  radial-gradient(35vmax 35vmax at 85% 30%, rgba(255,107,91,.16), transparent 60%),
+                  radial-gradient(40vmax 40vmax at 50% 95%, rgba(255,193,69,.12), transparent 60%);
+      animation: drift 16s ease-in-out infinite alternate; }
+    @keyframes drift { to { transform: translate3d(3vmax, -2vmax, 0) scale(1.06); } }
+    main { width: min(520px, 100% - 32px); margin: 0 auto; padding: 48px 0 40px; text-align: center; }
+    .avatar { width: 112px; height: 112px; border-radius: 50%; border: 3px solid var(--mustard);
+      box-shadow: 0 0 0 6px rgba(255,193,69,.15), 0 18px 40px -18px rgba(255,193,69,.6); animation: bob 5s ease-in-out infinite; }
+    @keyframes bob { 50% { transform: translateY(-6px) rotate(-3deg); } }
+    h1 { margin: 16px 0 2px; font-size: 1.7rem; letter-spacing: -.02em; }
+    .handle { color: var(--muted); margin: 0; }
+    .tagline { display: inline-block; margin: 14px 0 26px; padding: 6px 14px; border-radius: 999px; font-weight: 800;
+      font-size: .9rem; background: rgba(255,193,69,.12); color: var(--mustard); border: 1px solid rgba(255,193,69,.35); }
+    .links { display: grid; gap: 12px; }
+    .link { position: relative; display: flex; align-items: center; gap: 14px; padding: 14px 18px; border-radius: 18px;
+      background: var(--card); border: 1px solid var(--line); color: var(--text); text-decoration: none; font-weight: 800;
+      backdrop-filter: blur(12px); overflow: hidden; opacity: 0; transform: translateY(14px);
+      animation: in .6s cubic-bezier(.2,.8,.2,1) forwards; transition: transform .25s, border-color .25s, box-shadow .25s; }
+    @keyframes in { to { opacity: 1; transform: none; } }
+    .link:hover { transform: translateY(-3px) scale(1.01); border-color: var(--c, var(--teal));
+      box-shadow: 0 14px 34px -16px var(--c, var(--teal)); }
+    .link::after { content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+      background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,.08), transparent 70%); transition: transform .7s; }
+    .link:hover::after { transform: translateX(120%); }
+    .ico { flex: none; width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: var(--c, var(--teal)); }
+    .ico svg { width: 22px; height: 22px; fill: #fff; }
+    .txt { flex: 1; text-align: left; }
+    .txt small { display: block; color: var(--muted); font-weight: 600; font-size: .82rem; }
+    .arrow { color: var(--muted); font-size: 1.2rem; }
+    .featured { --c: var(--coral); background: linear-gradient(135deg, rgba(255,107,91,.22), rgba(255,193,69,.14)); }
+    .badge { position: absolute; top: 8px; right: 12px; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase;
+      padding: 2px 8px; border-radius: 999px; background: var(--coral); color: #fff; }
+    .soon { opacity: .55; pointer-events: none; border-style: dashed; }
+    h2 { margin: 30px 0 12px; font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
+    footer { margin-top: 34px; color: var(--muted); font-size: .82rem; }
+    footer a { color: var(--muted); }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; }
+      .link { opacity: 1; transform: none; } }
+  </style>
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+  <main>
+    <img class="avatar" src="logo.png" alt="Oddy, the Truth Is Odd mascot">
+    <h1>Truth Is Odd</h1>
+    <p class="handle">@truthisodd</p>
+    <span class="tagline">Weird facts. 100% true.</span>
+
+    <div class="links" id="links"></div>
+    <h2>More channels</h2>
+    <div class="links" id="channels"></div>
+
+    <footer>© 2026 Truth Is Odd · <a href="privacy.html">Privacy</a></footer>
+  </main>
+
+  <script>
+    // Hier pflegen: neue Videos, Plattformen und Kanäle. Ein Eintrag = ein Knopf.
+    const LATEST = { title: "What if you stood on Venus for 60 seconds?", url: "https://youtube.com/shorts/1AzE578n-ug" };
+    const LINKS = [
+      { name: "YouTube", sub: "Weird-fact Shorts", url: "https://www.youtube.com/@truthisodd", color: "#ff0033", icon: "yt" },
+      { name: "TikTok", sub: "@truthisodd", url: "https://www.tiktok.com/@truthisodd", color: "#111827", icon: "tt" },
+      { name: "Instagram", sub: "Reels", url: "https://www.instagram.com/truthisodd/", color: "#d62976", icon: "ig" },
+      { name: "Website", sub: "truthisodd-ops.github.io", url: "./", color: "#2ec4b6", icon: "web" },
+    ];
+    const CHANNELS = [  // weitere Kanäle: { name, sub, url, color, icon } ohne soon:true sobald online
+      { name: "New channel", sub: "Coming soon", url: "#", color: "#8b5cf6", icon: "plus", soon: true },
+    ];
+    const ICONS = {
+      yt: '<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/>',
+      tt: '<path d="M16.6 5.8A4.3 4.3 0 0 1 15.5 3h-3.2v12.4a2.6 2.6 0 1 1-2.6-2.6c.3 0 .5 0 .8.1V9.6a5.8 5.8 0 1 0 5 5.8V9a7.4 7.4 0 0 0 4.3 1.4V7.2a4.3 4.3 0 0 1-3.2-1.4z"/>',
+      ig: '<path d="M12 7.3A4.7 4.7 0 1 0 16.7 12 4.7 4.7 0 0 0 12 7.3zm0 7.7a3 3 0 1 1 3-3 3 3 0 0 1-3 3zm6-7.9a1.1 1.1 0 1 1-1.1-1.1A1.1 1.1 0 0 1 18 7.1zM21.9 8a5.4 5.4 0 0 0-1.5-3.9A5.4 5.4 0 0 0 16.5 2.6C15 2.5 9 2.5 7.5 2.6A5.4 5.4 0 0 0 3.6 4.1 5.4 5.4 0 0 0 2.1 8C2 9.5 2 14.5 2.1 16a5.4 5.4 0 0 0 1.5 3.9 5.4 5.4 0 0 0 3.9 1.5c1.5.1 7.5.1 9 0a5.4 5.4 0 0 0 3.9-1.5 5.4 5.4 0 0 0 1.5-3.9c.1-1.5.1-6.5 0-8zm-2 9.7a3 3 0 0 1-1.7 1.7c-1.2.5-4 .4-5.2.4s-4 .1-5.2-.4a3 3 0 0 1-1.7-1.7c-.5-1.2-.4-4-.4-5.2s-.1-4 .4-5.2A3 3 0 0 1 6.8 5.6C8 5.1 10.8 5.2 12 5.2s4-.1 5.2.4a3 3 0 0 1 1.7 1.7c.5 1.2.4 4 .4 5.2s.1 4-.4 5.2z"/>',
+      web: '<path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm6.9 6h-3a15.7 15.7 0 0 0-1.4-3.6A8 8 0 0 1 18.9 8zM12 4a14 14 0 0 1 1.9 4h-3.8A14 14 0 0 1 12 4zM4.3 14a8.2 8.2 0 0 1 0-4h3.4a16.5 16.5 0 0 0 0 4zm.8 2h3a15.7 15.7 0 0 0 1.4 3.6A8 8 0 0 1 5.1 16zm3-8h-3a8 8 0 0 1 4.4-3.6A15.7 15.7 0 0 0 8.1 8zM12 20a14 14 0 0 1-1.9-4h3.8A14 14 0 0 1 12 20zm2.3-6H9.7a14.7 14.7 0 0 1 0-4h4.6a14.7 14.7 0 0 1 0 4zm.2 5.6a15.7 15.7 0 0 0 1.4-3.6h3a8 8 0 0 1-4.4 3.6zm1.8-5.6a16.5 16.5 0 0 0 0-4h3.4a8.2 8.2 0 0 1 0 4z"/>',
+      play: '<path d="M8 5v14l11-7z"/>',
+      plus: '<path d="M11 5h2v14h-2zM5 11h14v2H5z"/>',
+    };
+    const card = (l, i, extra = "") => `<a class="link ${extra}${l.soon ? " soon" : ""}" href="${l.url}" style="--c:${l.color};animation-delay:${i * 70}ms"
+      ${l.url.startsWith("http") ? 'target="_blank" rel="noopener"' : ""}>
+      <span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS[l.icon] || ""}</svg></span>
+      <span class="txt">${l.name}<small>${l.sub}</small></span><span class="arrow">${l.soon ? "" : "→"}</span></a>`;
+    document.getElementById("links").innerHTML =
+      `<a class="link featured" href="${LATEST.url}" target="_blank" rel="noopener" style="animation-delay:0ms">
+        <span class="badge">New</span><span class="ico"><svg viewBox="0 0 24 24" aria-hidden="true">${ICONS.play}</svg></span>
+        <span class="txt">Latest video<small>${LATEST.title}</small></span><span class="arrow">→</span></a>` +
+      LINKS.map((l, i) => card(l, i + 1)).join("");
+    document.getElementById("channels").innerHTML = CHANNELS.map((l, i) => card(l, i + LINKS.length + 1)).join("");
+  </script>
+</body>
+</html>
